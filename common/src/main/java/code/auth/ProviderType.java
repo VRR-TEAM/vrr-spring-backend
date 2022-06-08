@@ -1,0 +1,26 @@
+package code.auth;
+
+import code.CodeType;
+
+public enum ProviderType implements CodeType {
+
+    GOOGLE("구글", "PVDTP_GOOGLE");
+
+    private String label;
+    private String code;
+
+    ProviderType(String label, String code) {
+        this.label = label;
+        this.code = code;
+    }
+
+    @Override
+    public String getCode() {
+        return code;
+    }
+
+    @Override
+    public String getLabel() {
+        return label;
+    }
+}
