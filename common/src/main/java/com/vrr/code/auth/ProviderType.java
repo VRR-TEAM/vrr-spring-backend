@@ -1,6 +1,6 @@
-package code.auth;
+package com.vrr.code.auth;
 
-import code.CodeType;
+import com.vrr.code.CodeType;
 
 public enum ProviderType implements CodeType {
 

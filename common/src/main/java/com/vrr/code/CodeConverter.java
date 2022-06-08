@@ -1,4 +1,4 @@
-package code;
+package com.vrr.code;
 
 import javax.persistence.AttributeConverter;
 import java.util.EnumSet;
