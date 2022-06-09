@@ -2,14 +2,16 @@ package com.vrr.code.auth;
 
 import com.vrr.code.CodeType;
 
-public enum ProviderType implements CodeType {
+public enum RoleType implements CodeType {
 
-    GOOGLE("구글", "PVDTP_GOOGLE");
+    USER("일반 사용자 권한", "ROLTP_USER"),
+    ADMIN("관리자 권한", "ROLTP_ADMIN"),
+    GUEST("게스트 권한", "ROLTP_GUEST");
 
     private final String label;
     private final String code;
 
-    ProviderType(String label, String code) {
+    RoleType(String label, String code) {
         this.label = label;
         this.code = code;
     }
