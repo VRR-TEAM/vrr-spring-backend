@@ -1,5 +1,6 @@
 package com.vrr.libs.auth.token;
 
+import com.vrr.libs.auth.exception.TokenNotValidException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
@@ -51,7 +52,7 @@ public class AuthTokenProvider {
 
             return new UsernamePasswordAuthenticationToken(principal, authToken, authorities);
         } else {
-            throw new IllegalArgumentException();
+            throw new TokenNotValidException();
         }
     }
 }
