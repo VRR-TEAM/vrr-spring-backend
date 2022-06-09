@@ -22,7 +22,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final AuthTokenProvider tokenProvider;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain filterChain) throws ServletException, IOException {
+
         String tokenStr = HeaderTokenParser.getAccessToken(request);
         AuthToken token = tokenProvider.convertAuthToken(tokenStr);
 
