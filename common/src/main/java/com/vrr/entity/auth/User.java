@@ -30,7 +30,7 @@ public class User {
     @Column(name = "USER_ID", length = 64, unique = true)
     @NotNull
     @Size(max = 64)
-    private String id;
+    private String uuid;
 
     @Column(name = "EMAIL", length = 100)
     @NotNull
@@ -40,7 +40,7 @@ public class User {
     @Column(name = "IS_EMAIL_VERIFIED", length = 1)
     @Size(min = 1, max = 1)
     @NotNull
-    private String isEmailVerified;
+    private String emailVerified;
 
     @Column(name = "PASSWORD", length = 128)
     @NotNull
@@ -75,7 +75,7 @@ public class User {
     private LocalDateTime updatedAt;
 
     public User(
-            @NotNull @Size(max = 64) String id,
+            @NotNull @Size(max = 64) String uuid,
             @NotNull @Size(max = 100) String username,
             @NotNull @Size(max = 512) String email,
             @NotNull @Size(max = 1) String isEmailVerified,
@@ -85,11 +85,11 @@ public class User {
             @NotNull LocalDateTime createdAt,
             @NotNull LocalDateTime updatedAt
     ) {
-        this.id = id;
+        this.uuid = uuid;
         this.username = username;
         this.password = "NO_PASSWORD";
         this.email = email != null ? email : "NO_EMAIL";
-        this.isEmailVerified = isEmailVerified;
+        this.emailVerified = isEmailVerified;
         this.profileImageUrl = profileImageUrl != null ? profileImageUrl : "";
         this.providerType = providerType;
         this.roleType = roleType;

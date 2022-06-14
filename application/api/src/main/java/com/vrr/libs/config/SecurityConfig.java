@@ -2,10 +2,10 @@ package com.vrr.libs.config;
 
 import com.vrr.libs.auth.filter.TokenAuthenticationFilter;
 import com.vrr.libs.auth.filter.RestAuthenticationEntryPoint;
-import com.vrr.libs.auth.token.AuthTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
@@ -15,7 +15,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final AuthTokenProvider tokenProvider;
+    private final TokenAuthenticationFilter tokenAuthenticationFilter;
+    private final AuthenticationManager authenticationManager;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -34,12 +35,9 @@ public class SecurityConfig {
                     // Add API End-Point to Allow Access
                     .anyRequest().authenticated()
                 .and()
-                    .addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                    .authenticationManager(authenticationManager)
+                    .addFilterBefore(tokenAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
-    @Bean
-    public TokenAuthenticationFilter tokenAuthenticationFilter() {
-        return new TokenAuthenticationFilter(tokenProvider);
-    }
 }
