@@ -1,7 +1,9 @@
 package com.vrr.libs.config;
 
+import com.vrr.code.auth.RoleType;
 import com.vrr.libs.auth.filter.TokenAuthenticationFilter;
 import com.vrr.libs.auth.filter.RestAuthenticationEntryPoint;
+import com.vrr.libs.auth.handler.TokenAccessDeniedHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +19,7 @@ public class SecurityConfig {
 
     private final TokenAuthenticationFilter tokenAuthenticationFilter;
     private final AuthenticationManager authenticationManager;
+    private final TokenAccessDeniedHandler tokenAccessDeniedHandler;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -30,9 +33,11 @@ public class SecurityConfig {
                     .httpBasic().disable()
                     .exceptionHandling()
                     .authenticationEntryPoint(new RestAuthenticationEntryPoint())
+                    .accessDeniedHandler(tokenAccessDeniedHandler)
                 .and()
                     .authorizeRequests()
-                    // Add API End-Point to Allow Access
+                    .antMatchers("/api/**").hasAnyAuthority(RoleType.USER.getCode())
+//                    .antMatchers("/api/**/admin/**").hasAnyAuthority(RoleType.ADMIN.getCode())
                     .anyRequest().authenticated()
                 .and()
                     .authenticationManager(authenticationManager)
