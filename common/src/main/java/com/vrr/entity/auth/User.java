@@ -95,4 +95,9 @@ public class User {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
+
+    public void updateProfile(String username, String profileImageUrl) {
+        this.username = username == null ? this.username : username;
+        this.profileImageUrl = profileImageUrl == null ? this.profileImageUrl : profileImageUrl;
+    }
 }
