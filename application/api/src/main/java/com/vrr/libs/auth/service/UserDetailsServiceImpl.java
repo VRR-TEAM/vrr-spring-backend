@@ -20,7 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String emailOrUuid) throws UsernameNotFoundException {
-        User storedUser = userRepository.findByUuid(emailOrUuid)
+        User storedUser = userRepository.findBySerialNumber(emailOrUuid)
                 .orElseThrow(() -> {
                     log.warn("No record found for storedUser with emailOrId {}", emailOrUuid);
                     throw new UsernameNotFoundException("User with emailOrId " + emailOrUuid + " not fount");

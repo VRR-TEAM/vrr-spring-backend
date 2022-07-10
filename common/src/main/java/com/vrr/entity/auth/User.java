@@ -23,14 +23,14 @@ public class User {
 
     @JsonIgnore
     @Id
-    @Column(name = "USER_SEQ")
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long seq;
+    private Long id;
 
-    @Column(name = "USER_ID", length = 64, unique = true)
+    @Column(name = "SERIAL_NUMBER", length = 64, unique = true)
     @NotNull
     @Size(max = 64)
-    private String uuid;
+    private String serialNumber;
 
     @Column(name = "EMAIL", length = 100)
     @NotNull
@@ -59,7 +59,6 @@ public class User {
 
     @Column(name = "PROVIDER_TYPE", length = 20)
     @NotNull
-//    @Convert(converter = ProviderType.class)
     private ProviderType providerType;
 
     @Column(name = "ROLE_TYPE", length = 20)
@@ -75,7 +74,7 @@ public class User {
     private LocalDateTime updatedAt;
 
     public User(
-            @NotNull @Size(max = 64) String uuid,
+            @NotNull @Size(max = 64) String serialNumber,
             @NotNull @Size(max = 100) String username,
             @NotNull @Size(max = 512) String email,
             @NotNull @Size(max = 1) String isEmailVerified,
@@ -85,7 +84,7 @@ public class User {
             @NotNull LocalDateTime createdAt,
             @NotNull LocalDateTime updatedAt
     ) {
-        this.uuid = uuid;
+        this.serialNumber = serialNumber;
         this.username = username;
         this.password = "NO_PASSWORD";
         this.email = email != null ? email : "NO_EMAIL";
