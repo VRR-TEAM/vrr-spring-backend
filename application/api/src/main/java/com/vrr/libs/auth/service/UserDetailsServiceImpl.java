@@ -26,6 +26,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                     throw new UsernameNotFoundException("User with emailOrId " + emailOrUuid + " not fount");
                 });
 
-        return UserPrincipal.build(storedUser);
+        return UserPrincipal.create(storedUser);
     }
 }

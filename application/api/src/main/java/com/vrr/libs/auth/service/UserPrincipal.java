@@ -8,12 +8,13 @@ import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.*;
 
 @Getter
 @Builder
-public class UserPrincipal implements UserDetails {
+public class UserPrincipal implements UserDetails, OAuth2User {
 
     private final String id;
     private final String username;
@@ -23,15 +24,30 @@ public class UserPrincipal implements UserDetails {
     private final RoleType roleType;
     private final String emailVerified;
     private final Collection<? extends GrantedAuthority> authorities;
-    private final Map<String, Object> attributes;
+    private Map<String, Object> attributes;
     private final boolean accountNonExpired;
     private final boolean accountNonLocked;
     private final boolean credentialsNonExpired;
     private final boolean enabled;
 
-    public static UserPrincipal build(final User user) {
+    @Override
+    public String getName() {
+        return id;
+    }
+
+    @Override
+    public String getUsername() {
+        return id;
+    }
+
+    @Override
+    public <A> A getAttribute(String name) {
+        return OAuth2User.super.getAttribute(name);
+    }
+
+    public static UserPrincipal create(final User user) {
         return UserPrincipal.builder()
-                .id(user.getUuid())
+                .id(user.getSerialNumber())
                 .email(user.getEmail())
                 .username(user.getUsername())
                 .password(user.getPassword())
@@ -42,5 +58,16 @@ public class UserPrincipal implements UserDetails {
                 .credentialsNonExpired(true)
                 .enabled(true)
                 .build();
+    }
+
+    public static UserPrincipal create(User user, Map<String, Object> attributes) {
+        UserPrincipal userPrincipal = create(user);
+        userPrincipal.setAttributes(attributes);
+
+        return userPrincipal;
+    }
+
+    private void setAttributes(Map<String, Object> attributes) {
+        this.attributes = attributes;
     }
 }
