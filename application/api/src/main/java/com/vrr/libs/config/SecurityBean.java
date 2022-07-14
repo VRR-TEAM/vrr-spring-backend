@@ -1,7 +1,6 @@
 package com.vrr.libs.config;
 
 import com.vrr.libs.auth.filter.TokenAuthenticationFilter;
-import com.vrr.libs.auth.repository.HttpCookieOAuth2AuthorizationRequestRepository;
 import com.vrr.libs.auth.token.AuthTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -23,10 +22,5 @@ public class SecurityBean {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public HttpCookieOAuth2AuthorizationRequestRepository CookieOAuth2AuthorizationRequestRepository() {
-        return new HttpCookieOAuth2AuthorizationRequestRepository();
     }
 }

@@ -1,13 +1,16 @@
 package com.vrr.libs.config;
 
 import com.vrr.code.auth.RoleType;
-import com.vrr.libs.auth.filter.TokenAuthenticationFilter;
 import com.vrr.libs.auth.filter.RestAuthenticationEntryPoint;
+import com.vrr.libs.auth.filter.TokenAuthenticationFilter;
+import com.vrr.libs.auth.handler.OAuth2AuthenticationFailerHandler;
+import com.vrr.libs.auth.handler.OAuth2AuthenticationSuccessHandler;
 import com.vrr.libs.auth.handler.TokenAccessDeniedHandler;
+import com.vrr.libs.auth.repository.HttpCookieOAuth2AuthorizationRequestRepository;
+import com.vrr.libs.auth.service.OAuth2UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
@@ -18,8 +21,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final TokenAuthenticationFilter tokenAuthenticationFilter;
-    private final AuthenticationManager authenticationManager;
     private final TokenAccessDeniedHandler tokenAccessDeniedHandler;
+    private final OAuth2UserServiceImpl oAuth2UserService;
+    private final HttpCookieOAuth2AuthorizationRequestRepository cookieOAuth2AuthorizationRequestRepository;
+    private final OAuth2AuthenticationSuccessHandler oauth2AuthenticationSuccessHandler;
+    private final OAuth2AuthenticationFailerHandler oAuth2AuthenticationFailerHandler;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -35,14 +41,25 @@ public class SecurityConfig {
                     .authenticationEntryPoint(new RestAuthenticationEntryPoint())
                     .accessDeniedHandler(tokenAccessDeniedHandler)
                 .and()
-                    .authorizeRequests()
+                .authorizeRequests()
                     .antMatchers("/api/**").hasAnyAuthority(RoleType.USER.getCode())
 //                    .antMatchers("/api/**/admin/**").hasAnyAuthority(RoleType.ADMIN.getCode())
                     .anyRequest().authenticated()
                 .and()
-                    .authenticationManager(authenticationManager)
+                    .oauth2Login(oauth2 -> oauth2
+                            .authorizationEndpoint()
+                            .baseUri("/oauth2/authorization")
+                            .authorizationRequestRepository(cookieOAuth2AuthorizationRequestRepository)
+                        .and()
+                            .redirectionEndpoint()
+                            .baseUri("/*/oauth2/code/*")
+                        .and()
+                            .userInfoEndpoint()
+                            .userService(oAuth2UserService)
+                        .and()
+                            .successHandler(oauth2AuthenticationSuccessHandler)
+                            .failureHandler(oAuth2AuthenticationFailerHandler))
                     .addFilterBefore(tokenAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
-
 }
