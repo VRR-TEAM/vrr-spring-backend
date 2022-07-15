@@ -56,7 +56,7 @@ public class OAuth2UserServiceImpl extends DefaultOAuth2UserService {
                         "Please use your " + savedUser.getProviderType() + " account to login."
                 );
             }
-            updateUser(savedUser, userInfo);
+            savedUser = updateUser(savedUser, userInfo);
         } else {
             savedUser = createUser(userInfo, providerType);
         }
@@ -78,7 +78,7 @@ public class OAuth2UserServiceImpl extends DefaultOAuth2UserService {
                 now
         );
 
-        return userRepository.saveAndFlush(user);
+        return userRepository.save(user);
     }
 
     private User updateUser(User user, OAuth2UserInfo userInfo) {
@@ -90,6 +90,6 @@ public class OAuth2UserServiceImpl extends DefaultOAuth2UserService {
             user.updateProfile(null, userInfo.getImageUrl());
         }
 
-        return user;
+        return userRepository.save(user);
     }
 }
