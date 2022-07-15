@@ -46,16 +46,17 @@ public class OAuth2UserServiceImpl extends DefaultOAuth2UserService {
 
         OAuth2UserInfo userInfo = OAuth2UserInfoFactory.getOAuth2UserInfo(providerType, user.getAttributes());
         Optional<User> userOptional = userRepository.findBySerialNumber(userInfo.getId());
+
         User savedUser;
         if (userOptional.isPresent()) {
             savedUser = userOptional.get();
             if (providerType != savedUser.getProviderType()) {
                 throw new OAuthProviderMissMatchException(
-                        "Looks like you're signed up with " + providerType +
-                                " account. Please use your " + savedUser.getProviderType() + " account to login."
+                        "Looks like you're signed up with " + providerType + "account. " +
+                        "Please use your " + savedUser.getProviderType() + " account to login."
                 );
             }
-            savedUser = updateUser(savedUser, userInfo);
+            updateUser(savedUser, userInfo);
         } else {
             savedUser = createUser(userInfo, providerType);
         }
