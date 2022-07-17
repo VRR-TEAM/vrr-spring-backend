@@ -1,6 +1,6 @@
 package com.vrr.domain.converter;
 
-import com.vrr.code.auth.RoleType;
+import com.vrr.common.code.auth.RoleType;
 import com.vrr.domain.converter.auth.CodeConverter;
 
 import javax.persistence.Converter;

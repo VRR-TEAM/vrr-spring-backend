@@ -1,7 +1,7 @@
 package com.vrr.domain.entity.auth;
 
-import com.vrr.code.auth.ProviderType;
-import com.vrr.code.auth.RoleType;
+import com.vrr.common.code.auth.ProviderType;
+import com.vrr.common.code.auth.RoleType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

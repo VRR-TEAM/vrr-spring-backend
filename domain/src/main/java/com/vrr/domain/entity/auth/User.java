@@ -1,8 +1,8 @@
 package com.vrr.domain.entity.auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.vrr.code.auth.ProviderType;
-import com.vrr.code.auth.RoleType;
+import com.vrr.common.code.auth.ProviderType;
+import com.vrr.common.code.auth.RoleType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.vrr.code;
+package com.vrr.common.code;
 
 public interface CodeType {
 

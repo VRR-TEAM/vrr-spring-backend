@@ -1,6 +1,6 @@
 package com.vrr.domain.converter.auth;
 
-import com.vrr.code.auth.ProviderType;
+import com.vrr.common.code.auth.ProviderType;
 
 import javax.persistence.Converter;
 

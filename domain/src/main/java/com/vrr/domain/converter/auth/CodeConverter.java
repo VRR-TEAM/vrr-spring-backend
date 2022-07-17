@@ -1,6 +1,6 @@
 package com.vrr.domain.converter.auth;
 
-import com.vrr.code.CodeType;
+import com.vrr.common.code.CodeType;
 
 import javax.persistence.AttributeConverter;
 import java.util.EnumSet;

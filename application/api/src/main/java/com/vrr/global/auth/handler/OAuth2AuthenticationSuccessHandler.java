@@ -1,7 +1,7 @@
 package com.vrr.global.auth.handler;
 
-import com.vrr.code.auth.ProviderType;
-import com.vrr.code.auth.RoleType;
+import com.vrr.common.code.auth.ProviderType;
+import com.vrr.common.code.auth.RoleType;
 import com.vrr.global.auth.info.OAuth2UserInfo;
 import com.vrr.global.auth.info.OAuth2UserInfoFactory;
 import com.vrr.global.auth.properties.AppProperties;

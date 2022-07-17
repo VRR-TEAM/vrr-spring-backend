@@ -1,6 +1,6 @@
 package com.vrr.global.auth.info;
 
-import com.vrr.code.auth.ProviderType;
+import com.vrr.common.code.auth.ProviderType;
 import com.vrr.global.auth.info.implement.GoogleOAuth2UserInfo;
 import com.vrr.global.auth.info.implement.KakaoOAuth2UserInfo;
 import com.vrr.global.auth.info.implement.NaverOAuth2UserInfo;

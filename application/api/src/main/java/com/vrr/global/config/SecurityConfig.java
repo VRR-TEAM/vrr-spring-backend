@@ -1,6 +1,6 @@
 package com.vrr.global.config;
 
-import com.vrr.code.auth.RoleType;
+import com.vrr.common.code.auth.RoleType;
 import com.vrr.global.auth.filter.RestAuthenticationEntryPoint;
 import com.vrr.global.auth.filter.TokenAuthenticationFilter;
 import com.vrr.global.auth.handler.OAuth2AuthenticationFailerHandler;
@@ -9,7 +9,6 @@ import com.vrr.global.auth.handler.TokenAccessDeniedHandler;
 import com.vrr.global.auth.repository.HttpCookieOAuth2AuthorizationRequestRepository;
 import com.vrr.global.auth.service.OAuth2UserServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
