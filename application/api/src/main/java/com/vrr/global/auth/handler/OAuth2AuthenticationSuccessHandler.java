@@ -1,14 +1,14 @@
 package com.vrr.global.auth.handler;
 
+import com.vrr.common.auth.info.OAuth2UserInfo;
+import com.vrr.common.auth.info.OAuth2UserInfoFactory;
 import com.vrr.common.code.auth.ProviderType;
 import com.vrr.common.code.auth.RoleType;
-import com.vrr.global.auth.info.OAuth2UserInfo;
-import com.vrr.global.auth.info.OAuth2UserInfoFactory;
 import com.vrr.global.auth.properties.AppProperties;
 import com.vrr.global.auth.repository.HttpCookieOAuth2AuthorizationRequestRepository;
 import com.vrr.global.auth.token.AuthToken;
 import com.vrr.global.auth.token.AuthTokenProvider;
-import com.vrr.global.utils.CookieUtils;
+import com.vrr.common.auth.utils.CookieUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

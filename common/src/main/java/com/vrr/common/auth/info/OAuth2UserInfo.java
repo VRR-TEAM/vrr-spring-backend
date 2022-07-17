@@ -1,4 +1,4 @@
-package com.vrr.global.auth.info;
+package com.vrr.common.auth.info;
 
 import java.util.Map;
 

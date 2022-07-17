@@ -1,6 +1,6 @@
-package com.vrr.global.auth.info.implement;
+package com.vrr.common.auth.info.implement;
 
-import com.vrr.global.auth.info.OAuth2UserInfo;
+import com.vrr.common.auth.info.OAuth2UserInfo;
 
 import java.util.Map;
 

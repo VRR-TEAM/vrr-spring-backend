@@ -1,9 +1,9 @@
-package com.vrr.global.auth.info;
+package com.vrr.common.auth.info;
 
+import com.vrr.common.auth.info.implement.GoogleOAuth2UserInfo;
+import com.vrr.common.auth.info.implement.KakaoOAuth2UserInfo;
+import com.vrr.common.auth.info.implement.NaverOAuth2UserInfo;
 import com.vrr.common.code.auth.ProviderType;
-import com.vrr.global.auth.info.implement.GoogleOAuth2UserInfo;
-import com.vrr.global.auth.info.implement.KakaoOAuth2UserInfo;
-import com.vrr.global.auth.info.implement.NaverOAuth2UserInfo;
 
 import java.util.Map;
 

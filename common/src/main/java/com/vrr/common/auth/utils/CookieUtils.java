@@ -1,4 +1,4 @@
-package com.vrr.global.utils;
+package com.vrr.common.auth.utils;
 
 import org.springframework.util.SerializationUtils;
 

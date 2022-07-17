@@ -1,7 +1,7 @@
 package com.vrr.global.auth.handler;
 
 import com.vrr.global.auth.repository.HttpCookieOAuth2AuthorizationRequestRepository;
-import com.vrr.global.utils.CookieUtils;
+import com.vrr.common.auth.utils.CookieUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;

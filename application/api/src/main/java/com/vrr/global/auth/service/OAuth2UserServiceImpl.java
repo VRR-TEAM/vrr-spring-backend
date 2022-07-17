@@ -1,12 +1,12 @@
 package com.vrr.global.auth.service;
 
+import com.vrr.common.auth.info.OAuth2UserInfo;
+import com.vrr.common.auth.info.OAuth2UserInfoFactory;
 import com.vrr.common.code.auth.ProviderType;
 import com.vrr.common.code.auth.RoleType;
 import com.vrr.domain.entity.auth.User;
 import com.vrr.domain.entity.auth.UserRepository;
 import com.vrr.global.auth.exception.OAuthProviderMissMatchException;
-import com.vrr.global.auth.info.OAuth2UserInfo;
-import com.vrr.global.auth.info.OAuth2UserInfoFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;

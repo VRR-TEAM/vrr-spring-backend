@@ -1,7 +1,7 @@
 package com.vrr.global.auth.repository;
 
 import com.nimbusds.oauth2.sdk.util.StringUtils;
-import com.vrr.global.utils.CookieUtils;
+import com.vrr.common.auth.utils.CookieUtils;
 import org.springframework.security.oauth2.client.web.AuthorizationRequestRepository;
 import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 import org.springframework.stereotype.Component;
