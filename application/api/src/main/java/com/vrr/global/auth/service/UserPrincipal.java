@@ -2,7 +2,7 @@ package com.vrr.global.auth.service;
 
 import com.vrr.code.auth.ProviderType;
 import com.vrr.code.auth.RoleType;
-import com.vrr.entity.auth.User;
+import com.vrr.domain.entity.auth.User;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;

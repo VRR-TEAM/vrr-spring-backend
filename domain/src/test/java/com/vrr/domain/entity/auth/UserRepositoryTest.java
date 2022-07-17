@@ -1,4 +1,4 @@
-package com.vrr.entity.auth;
+package com.vrr.domain.entity.auth;
 
 import com.vrr.code.auth.ProviderType;
 import com.vrr.code.auth.RoleType;
@@ -26,7 +26,7 @@ class UserRepositoryTest {
 
         // when
         user = userRepository.save(user);
-        User foundUser = userRepository.findById(user.getSeq()).get();
+        User foundUser = userRepository.findById(user.getId()).get();
 
         // then
         assertThat(foundUser.getEmail()).isEqualTo("sysn4r@gmail.com");

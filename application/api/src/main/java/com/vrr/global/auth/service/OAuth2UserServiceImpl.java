@@ -2,8 +2,8 @@ package com.vrr.global.auth.service;
 
 import com.vrr.code.auth.ProviderType;
 import com.vrr.code.auth.RoleType;
-import com.vrr.entity.auth.User;
-import com.vrr.entity.auth.UserRepository;
+import com.vrr.domain.entity.auth.User;
+import com.vrr.domain.entity.auth.UserRepository;
 import com.vrr.global.auth.exception.OAuthProviderMissMatchException;
 import com.vrr.global.auth.info.OAuth2UserInfo;
 import com.vrr.global.auth.info.OAuth2UserInfoFactory;

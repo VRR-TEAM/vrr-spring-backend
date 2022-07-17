@@ -1,7 +1,7 @@
 package com.vrr.global.auth.service;
 
-import com.vrr.entity.auth.User;
-import com.vrr.entity.auth.UserRepository;
+import com.vrr.domain.entity.auth.User;
+import com.vrr.domain.entity.auth.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,4 +1,4 @@
-package com.vrr.entity.auth;
+package com.vrr.domain.entity.auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.vrr.code.auth.ProviderType;
