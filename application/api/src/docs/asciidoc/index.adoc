@@ -23,7 +23,7 @@ VRR 프로젝트 중 인증이 필요한 경우 아래의 API를 활용해 인�
 
 
 === OAuth2 기반 로그인
-* link:./v1/auth/oauth-singin.html[상세 페이지]
+* link:./v1/auth/oauth-signin.html[상세 페이지]
 
 === POST 로그인
 * link:./v1/auth/signin.html[상세 페이지]
